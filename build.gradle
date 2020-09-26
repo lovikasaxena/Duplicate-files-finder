@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+//    id 'idea'
+}
+
+group 'com.cogent.assignment'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.0'
+
+}
+
+jar {
+    baseName = 'Duplicate-Files-Finder'
+    version =  '1.0.0'
+}
+
+test {
+    useJUnitPlatform()
+}

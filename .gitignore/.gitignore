@@ -1,5 +1,11 @@
+#IntelliJ
 .idea
-Duplicate-Files-Finder.iml
+
+#gradle
+.gradle
+
+#build folder
+build
 
 # Compiled class file
 *.class
