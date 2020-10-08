@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-//    id 'idea'
+    id 'idea'
 }
 
 group 'com.cogent.assignment'
@@ -16,13 +16,4 @@ repositories {
 dependencies {
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.0'
     testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
-}
-
-jar {
-    baseName = 'Duplicate-Files-Finder'
-    version =  '1.0.0'
-}
-
-test {
-    useJUnitPlatform()
 }
