@@ -12,7 +12,7 @@ class SHAGeneratorTest {
     private SHAGenerator shaGenerator = new SHAGenerator();
 
     @Test
-    void should_create_md5_sha256_for_given_content() throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    void should_create_md5_sha256_for_given_content() throws NoSuchAlgorithmException {
         String content = "Hello world!";
 
         String result = shaGenerator.createSHAFor(content);

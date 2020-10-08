@@ -12,7 +12,7 @@ public class SHAGenerator {
 
     public static final String SHA_256 = "SHA-256";
 
-    public String createSHAFor(String content) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public String createSHAFor(String content) throws NoSuchAlgorithmException {
         MessageDigest instance = MessageDigest.getInstance(SHA_256);
         byte[] messageDigest = instance.digest(content.getBytes(UTF_8));
         return new BigInteger(1, messageDigest).toString(16);
