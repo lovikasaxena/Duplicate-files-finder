@@ -17,7 +17,7 @@ class ImageParserTest {
 
     @Test
     void should_parse_all_pixels_of_given_image_and_create_hash() throws IOException, NoSuchAlgorithmException {
-        String imagePath = this.getClass().getResource("/homeDir/tue.jpg").getPath();
+        String imagePath = this.getClass().getResource("/duplicateImages/tue.jpg").getPath();
 
         SHAGenerator shaGenerator = mock(SHAGenerator.class);
         ImageParser imageParserWithMock = new ImageParser(shaGenerator);
@@ -31,8 +31,8 @@ class ImageParserTest {
 
     @Test
     void should_return_same_hash_when_both_images_are_same() throws IOException, NoSuchAlgorithmException {
-        String path1 = this.getClass().getResource("/homeDir/tue.jpg").getPath();
-        String path2 = this.getClass().getResource("/homeDir/tue_bnW.jpg").getPath();
+        String path1 = this.getClass().getResource("/duplicateImages/tue.jpg").getPath();
+        String path2 = this.getClass().getResource("/duplicateImages/tue_bnW.jpg").getPath();
 
         ImageParser imageParser = new ImageParser(new SHAGenerator());
         String imageSHA1 = imageParser.createSHAForImage(path1);
@@ -43,8 +43,8 @@ class ImageParserTest {
 
     @Test
     void should_return_different_hash_when_images_are_same_but_have_color_difference() throws IOException, NoSuchAlgorithmException {
-        String path1 = this.getClass().getResource("/homeDir/tue.jpg").getPath();
-        String path2 = this.getClass().getResource("/homeDir/tue_bnW.jpg").getPath();
+        String path1 = this.getClass().getResource("/duplicateImages/tue.jpg").getPath();
+        String path2 = this.getClass().getResource("/duplicateImages/tue_bnW.jpg").getPath();
 
         ImageParser imageParser = new ImageParser(new SHAGenerator());
         String imageSHA1 = imageParser.createSHAForImage(path1);
@@ -55,8 +55,8 @@ class ImageParserTest {
 
     @Test
     void should_return_different_hash_when_images_are_different() throws IOException, NoSuchAlgorithmException {
-        String path1 = this.getClass().getResource("/homeDir/tue.jpg").getPath();
-        String path2 = this.getClass().getResource("/homeDir/barry.JPG").getPath();
+        String path1 = this.getClass().getResource("/duplicateImages/tue.jpg").getPath();
+        String path2 = this.getClass().getResource("/duplicateImages/barry.JPG").getPath();
 
         ImageParser imageParser = new ImageParser(new SHAGenerator());
         String imageSHA1 = imageParser.createSHAForImage(path1);
