@@ -1,9 +1,9 @@
 package com.cogent.assignment.duplicate_files_finder;
 
+import com.cogent.assignment.duplicate_files_finder.exceptions.SearchDirectoryPathRequiredException;
 import com.cogent.assignment.duplicate_files_finder.hash.SHAGenerator;
 import com.cogent.assignment.duplicate_files_finder.parser.DirectoryParser;
 import com.cogent.assignment.duplicate_files_finder.parser.ImageParser;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ class AppStarterIntegrationTest {
     private AppStarter appStarter = new AppStarter(directoryParser);
 
     @Test
-    void should_return_duplicate_images_for_given_initial_path() throws IOException, NoSuchAlgorithmException {
+    void should_return_duplicate_images_for_given_initial_path() throws IOException, NoSuchAlgorithmException, SearchDirectoryPathRequiredException {
         String path = this.getClass().getResource("/homeDir").getPath();
         List expectedDuplicates = Arrays.asList(
             Arrays.asList(

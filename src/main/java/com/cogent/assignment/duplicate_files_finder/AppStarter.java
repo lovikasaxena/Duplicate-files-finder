@@ -1,9 +1,8 @@
 package com.cogent.assignment.duplicate_files_finder;
 
 
-import com.cogent.assignment.duplicate_files_finder.hash.SHAGenerator;
+import com.cogent.assignment.duplicate_files_finder.exceptions.SearchDirectoryPathRequiredException;
 import com.cogent.assignment.duplicate_files_finder.parser.DirectoryParser;
-import com.cogent.assignment.duplicate_files_finder.parser.ImageParser;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -19,7 +18,11 @@ public class AppStarter {
         this.directoryParser = directoryParser;
     }
 
-    public List<List<String>> findDuplicates(String path) throws IOException, NoSuchAlgorithmException {
+    public List<List<String>> findDuplicates(String path) throws IOException, NoSuchAlgorithmException, SearchDirectoryPathRequiredException {
+        if(path == null || path.isBlank()) {
+            throw new SearchDirectoryPathRequiredException();
+        }
+
         HashMap<String, List<String>> duplicateImagesMap = directoryParser.parseFiles(path, new HashMap());
 
         return duplicateImagesMap

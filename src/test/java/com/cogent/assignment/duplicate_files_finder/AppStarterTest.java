@@ -1,7 +1,7 @@
 package com.cogent.assignment.duplicate_files_finder;
 
+import com.cogent.assignment.duplicate_files_finder.exceptions.SearchDirectoryPathRequiredException;
 import com.cogent.assignment.duplicate_files_finder.parser.DirectoryParser;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -10,7 +10,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
@@ -23,7 +24,7 @@ class AppStarterTest {
     private AppStarter appStarter = new AppStarter(directoryParser);
 
     @Test
-    void should_start_finding_duplicate_files_using_directory_parser() throws IOException, NoSuchAlgorithmException {
+    void should_start_finding_duplicate_files_using_directory_parser() throws IOException, NoSuchAlgorithmException, SearchDirectoryPathRequiredException {
         String path = "/homeDir";
 
         appStarter.findDuplicates(path);
@@ -32,7 +33,7 @@ class AppStarterTest {
     }
 
     @Test
-    void should_filter_result_entries_having_more_than_one_file_paths() throws IOException, NoSuchAlgorithmException {
+    void should_filter_result_entries_having_more_than_one_file_paths() throws IOException, NoSuchAlgorithmException, SearchDirectoryPathRequiredException {
         String path = "/homeDir";
         HashMap<String, List<String>> result = new HashMap<>();
         result.put("1", Arrays.asList("path1", "path2"));
@@ -49,5 +50,23 @@ class AppStarterTest {
         List<List<String>> duplicateFiles = appStarter.findDuplicates(path);
 
         assertEquals(expectedDuplicateFilePaths, duplicateFiles);
+    }
+
+    @Test
+    void should_throw_search_directory_path_required_exception_when_path_is_null() {
+        assertThrows(
+            SearchDirectoryPathRequiredException.class,
+            () -> appStarter.findDuplicates(null),
+            "Application requires a directory path to start searching duplicate files in"
+        );
+    }
+
+    @Test
+    void should_throw_search_directory_path_required_exception_when_path_is_blank() {
+        assertThrows(
+            SearchDirectoryPathRequiredException.class,
+            () -> appStarter.findDuplicates("      "),
+            "Application requires a directory path to start searching duplicate files in"
+        );
     }
 }
