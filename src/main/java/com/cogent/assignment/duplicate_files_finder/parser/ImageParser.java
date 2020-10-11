@@ -11,10 +11,13 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class ImageParser {
 
     private SHAGenerator shaGenerator;
+    private Logger logger = Logger.getLogger("ImageParser");
+
     public static final List<String> SUPPORTED_FILE_FORMATS = Arrays.asList("jpg", "jpeg", "png", "gif", "tiff");
 
     public ImageParser(SHAGenerator shaGenerator) {
@@ -22,6 +25,7 @@ public class ImageParser {
     }
 
     String createSHAForImage(String path) throws IOException, NoSuchAlgorithmException, UnsupportedFileFormatException {
+
         BufferedImage bufferedImage = read(path);
 
         StringBuffer imagePixels = new StringBuffer();
@@ -37,8 +41,10 @@ public class ImageParser {
     }
 
     private BufferedImage read(String path) throws IOException, UnsupportedFileFormatException {
+        logger.info("Reading file: " + path);
         File file = new File(path);
         checkForUnsupportedFileFormat(file);
+
         return ImageIO.read(file);
     }
 

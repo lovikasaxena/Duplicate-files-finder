@@ -21,6 +21,7 @@ public class DirectoryParser {
     }
 
     public HashMap<String, List<String>> parseFiles(String directoryPath, HashMap<String, List<String>> imageHashToLocationsMap) throws IOException, NoSuchAlgorithmException {
+        logger.info("Parsing files in directory: " + directoryPath);
         File directory = new File(directoryPath);
         File[] directoryFiles = directory.listFiles();
 
