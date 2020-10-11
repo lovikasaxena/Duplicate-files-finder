@@ -1,14 +1,13 @@
 package com.cogent.assignment.duplicate_files_finder.parser;
 
 
-import org.junit.jupiter.api.Assertions;
+import com.cogent.assignment.duplicate_files_finder.exceptions.UnsupportedFileFormatException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,7 +23,7 @@ class DirectoryParserTest {
     private DirectoryParser directoryParser = new DirectoryParser(imageParser);
 
     @Test
-    void should_parse_all_images_in_directory_and_add_new_images_to_parsed_images_map() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+    void should_parse_all_images_in_directory_and_add_new_images_to_parsed_images_map() throws IOException, NoSuchAlgorithmException, URISyntaxException, UnsupportedFileFormatException {
         URI directoryPath = this.getClass().getResource("/testDirectory").toURI();
         String path1 = this.getClass().getResource("/testDirectory/camping/tent.jpg").toURI().getPath();
         String path2 = this.getClass().getResource("/testDirectory/camping/summit at dawn.jpg").toURI().getPath();
@@ -40,7 +39,7 @@ class DirectoryParserTest {
     }
 
     @Test
-    void should_parse_images_in_subdirectories_of_given_directory() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+    void should_parse_images_in_subdirectories_of_given_directory() throws IOException, NoSuchAlgorithmException, URISyntaxException, UnsupportedFileFormatException {
         URI directoryPath = this.getClass().getResource("/testDirectory").toURI();
         String image1 = this.getClass().getResource("/testDirectory/castle_from_drone.jpg").toURI().getPath();
         String subDirImage1 = this.getClass().getResource("/testDirectory/camping/tent.jpg").toURI().getPath();
@@ -57,7 +56,7 @@ class DirectoryParserTest {
     }
 
     @Test
-    void should_add_duplicate_file_paths_for_same_SHA() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+    void should_add_duplicate_file_paths_for_same_SHA() throws IOException, NoSuchAlgorithmException, URISyntaxException, UnsupportedFileFormatException {
         URI directoryPath = this.getClass().getResource("/testDirectory").toURI();
         String image1 = this.getClass().getResource("/testDirectory/castle_from_drone.jpg").toURI().getPath();
         String subDirImage1 = this.getClass().getResource("/testDirectory/camping/tent.jpg").toURI().getPath();
@@ -71,5 +70,18 @@ class DirectoryParserTest {
 
         assertTrue(parsedImageHashes.get("1234").contains(subDirImage1));
         assertTrue(parsedImageHashes.get("1234").contains(image1));
+    }
+
+    @Test
+    void should_ignore_unsupported_file_and_continue_parsing_directory() throws IOException, NoSuchAlgorithmException, URISyntaxException, UnsupportedFileFormatException {
+        String directoryPath = this.getClass().getResource("/testDirectory/camping").toURI().getPath();
+        String subDirImage1 = this.getClass().getResource("/testDirectory/camping/tent.jpg").toURI().getPath();
+
+        when(imageParser.createSHAForImage(directoryPath+"/summit at dawn.jpg")).thenThrow(new UnsupportedFileFormatException("pdf"));
+        when(imageParser.createSHAForImage(directoryPath + "/tent.jpg")).thenReturn("5678");
+
+        HashMap<String, List<String>> parsedImageHashes = directoryParser.parseFiles(directoryPath, new HashMap());
+
+        assertTrue(parsedImageHashes.get("5678").contains(subDirImage1));
     }
 }
