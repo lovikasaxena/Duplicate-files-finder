@@ -4,6 +4,7 @@ import com.cogent.assignment.duplicate_files_finder.exceptions.SearchDirectoryPa
 import com.cogent.assignment.duplicate_files_finder.hash.SHAGenerator;
 import com.cogent.assignment.duplicate_files_finder.parser.DirectoryParser;
 import com.cogent.assignment.duplicate_files_finder.parser.ImageParser;
+import com.cogent.assignment.duplicate_files_finder.starter.AppStarter;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

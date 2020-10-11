@@ -2,6 +2,7 @@ package com.cogent.assignment.duplicate_files_finder;
 
 import com.cogent.assignment.duplicate_files_finder.exceptions.SearchDirectoryPathRequiredException;
 import com.cogent.assignment.duplicate_files_finder.parser.DirectoryParser;
+import com.cogent.assignment.duplicate_files_finder.starter.AppStarter;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -11,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
@@ -52,21 +52,4 @@ class AppStarterTest {
         assertEquals(expectedDuplicateFilePaths, duplicateFiles);
     }
 
-    @Test
-    void should_throw_search_directory_path_required_exception_when_path_is_null() {
-        assertThrows(
-            SearchDirectoryPathRequiredException.class,
-            () -> appStarter.findDuplicates(null),
-            "Application requires a directory path to start searching duplicate files in"
-        );
-    }
-
-    @Test
-    void should_throw_search_directory_path_required_exception_when_path_is_blank() {
-        assertThrows(
-            SearchDirectoryPathRequiredException.class,
-            () -> appStarter.findDuplicates("      "),
-            "Application requires a directory path to start searching duplicate files in"
-        );
-    }
 }
