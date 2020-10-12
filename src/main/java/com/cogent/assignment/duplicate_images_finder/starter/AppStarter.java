@@ -1,7 +1,6 @@
 package com.cogent.assignment.duplicate_images_finder.starter;
 
 
-import com.cogent.assignment.duplicate_images_finder.exceptions.SearchDirectoryPathRequiredException;
 import com.cogent.assignment.duplicate_images_finder.parser.DirectoryParser;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ public class AppStarter {
         this.directoryParser = directoryParser;
     }
 
-    public List<List<String>> findDuplicates(String path) throws IOException, NoSuchAlgorithmException, SearchDirectoryPathRequiredException {
+    public List<List<String>> findDuplicates(String path) throws IOException, NoSuchAlgorithmException {
         HashMap<String, List<String>> duplicateImagesMap = directoryParser.parseFiles(path, new HashMap());
 
         return duplicateImagesMap

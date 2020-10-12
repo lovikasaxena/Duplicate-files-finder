@@ -23,5 +23,5 @@ dependencies {
 mainClassName = 'com.cogent.assignment.duplicate_images_finder.Main'
 
 run {
-    args += '/Users/lovikasaxena/Documents/projects/Duplicate-Files-Finder/src/test/resources/duplicateImages'  //TODO: Replace this path with the absolute path to start searching for duplicate images in
+    args += '/Users/lovikasaxena/Downloads/Code Test'  //TODO: Replace this path with the absolute path to start searching for duplicate images in
 }
