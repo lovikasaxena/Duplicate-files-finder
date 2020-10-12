@@ -1,4 +1,4 @@
-package com.cogent.assignment.duplicate_files_finder.exceptions;
+package com.cogent.assignment.duplicate_images_finder.exceptions;
 
 /**
  * Created by lovikasaxena

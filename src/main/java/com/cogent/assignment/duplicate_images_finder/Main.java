@@ -1,10 +1,10 @@
-package com.cogent.assignment.duplicate_files_finder;
+package com.cogent.assignment.duplicate_images_finder;
 
-import com.cogent.assignment.duplicate_files_finder.exceptions.SearchDirectoryPathRequiredException;
-import com.cogent.assignment.duplicate_files_finder.hash.SHAGenerator;
-import com.cogent.assignment.duplicate_files_finder.parser.DirectoryParser;
-import com.cogent.assignment.duplicate_files_finder.parser.ImageParser;
-import com.cogent.assignment.duplicate_files_finder.starter.AppStarter;
+import com.cogent.assignment.duplicate_images_finder.exceptions.SearchDirectoryPathRequiredException;
+import com.cogent.assignment.duplicate_images_finder.hash.SHAGenerator;
+import com.cogent.assignment.duplicate_images_finder.parser.DirectoryParser;
+import com.cogent.assignment.duplicate_images_finder.parser.ImageParser;
+import com.cogent.assignment.duplicate_images_finder.starter.AppStarter;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;

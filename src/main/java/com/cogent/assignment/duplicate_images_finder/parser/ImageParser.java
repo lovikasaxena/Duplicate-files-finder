@@ -1,8 +1,8 @@
-package com.cogent.assignment.duplicate_files_finder.parser;
+package com.cogent.assignment.duplicate_images_finder.parser;
 
 
-import com.cogent.assignment.duplicate_files_finder.exceptions.UnsupportedFileFormatException;
-import com.cogent.assignment.duplicate_files_finder.hash.SHAGenerator;
+import com.cogent.assignment.duplicate_images_finder.exceptions.UnsupportedFileFormatException;
+import com.cogent.assignment.duplicate_images_finder.hash.SHAGenerator;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

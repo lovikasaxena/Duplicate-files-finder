@@ -1,11 +1,11 @@
-package com.cogent.assignment.duplicate_files_finder.hash;
+package com.cogent.assignment.duplicate_images_finder.hash;
 
 import org.junit.jupiter.api.Test;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SHAGeneratorTest {
 

@@ -1,6 +1,6 @@
-package com.cogent.assignment.duplicate_files_finder;
+package com.cogent.assignment.duplicate_images_finder;
 
-import com.cogent.assignment.duplicate_files_finder.exceptions.SearchDirectoryPathRequiredException;
+import com.cogent.assignment.duplicate_images_finder.exceptions.SearchDirectoryPathRequiredException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;

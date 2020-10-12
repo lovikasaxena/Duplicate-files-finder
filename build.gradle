@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'idea'
+    id 'application'
 }
 
 group 'com.cogent.assignment'
@@ -17,4 +18,10 @@ dependencies {
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0'
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.6.0'
     testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+}
+
+mainClassName = 'com.cogent.assignment.duplicate_images_finder.Main'
+
+run {
+    args += '/Users/lovikasaxena/Documents/projects/Duplicate-Files-Finder/src/test/resources/duplicateImages'  //TODO: Replace this path with the absolute path to start searching for duplicate images in
 }

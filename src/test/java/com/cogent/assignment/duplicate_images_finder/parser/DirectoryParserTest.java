@@ -1,7 +1,7 @@
-package com.cogent.assignment.duplicate_files_finder.parser;
+package com.cogent.assignment.duplicate_images_finder.parser;
 
 
-import com.cogent.assignment.duplicate_files_finder.exceptions.UnsupportedFileFormatException;
+import com.cogent.assignment.duplicate_images_finder.exceptions.UnsupportedFileFormatException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

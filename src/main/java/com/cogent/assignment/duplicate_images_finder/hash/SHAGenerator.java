@@ -1,8 +1,6 @@
-package com.cogent.assignment.duplicate_files_finder.hash;
+package com.cogent.assignment.duplicate_images_finder.hash;
 
-import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
